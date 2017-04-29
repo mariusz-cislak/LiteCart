@@ -1,8 +1,12 @@
 package org.tests;
 
 import com.gargoylesoftware.htmlunit.javascript.host.intl.DateTimeFormat;
+import com.sun.deploy.uitoolkit.ui.LoggerConsole;
+import com.sun.media.jfxmedia.logging.Logger;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.logging.Log;
 import org.apache.xerces.impl.dv.xs.DateTimeDV;
+import org.eclipse.jetty.util.log.LoggerLog;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -17,6 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -51,13 +56,10 @@ public class Tests {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hdtb-msb-vis")));
         File screenShotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            Date dt = new Date();
-            String currDateTime = String.valueOf(dt.getSeconds())+"-"
-                    + String.valueOf(dt.getMinutes())+"-"
-                    + String.valueOf(dt.getHours())+"-"
-                    + String.valueOf(dt.getDate())+"-"
-                    + String.valueOf(dt.getMonth())+"-";
-            FileUtils.copyFile(screenShotFile, new File("D:\\SeleniumScreens\\" + currDateTime + ".png"));
+            Date date = new Date() ;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+            FileUtils.copyFile(screenShotFile, new File("D:\\SeleniumScreens\\" + dateFormat.format(date) + ".png"));
+//            LoggerConsole.
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
