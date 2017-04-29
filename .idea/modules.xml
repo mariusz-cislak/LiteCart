@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artIdTests.iml" filepath="$PROJECT_DIR$/.idea/modules/artIdTests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LiteCartTests.iml" filepath="$PROJECT_DIR$/.idea/modules/LiteCartTests.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/artIdTests_main.iml" filepath="$PROJECT_DIR$/.idea/modules/artIdTests_main.iml" group="artIdTests" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/artIdTests_test.iml" filepath="$PROJECT_DIR$/.idea/modules/artIdTests_test.iml" group="artIdTests" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/liteCartTests_test.iml" filepath="$PROJECT_DIR$/.idea/modules/liteCartTests_test.iml" group="artIdTests" />
     </modules>
   </component>
 </project>
