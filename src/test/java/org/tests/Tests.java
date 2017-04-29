@@ -16,6 +16,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.logging.*;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,6 +27,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
@@ -36,14 +40,25 @@ public class Tests {
 
     @Before
     public void Start() {
+
         driver = new ChromeDriver();
     }
 
-    @Ignore
     @Test
     public void test1() {
-        driver.get("http://www.google.com");
-        driver.close();
+        driver.get("http://127.0.0.1/litecart/en/");
+        File screenShotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        Date date = new Date() ;
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+        try {
+            FileUtils.copyFile(screenShotFile, new File("D:\\SeleniumScreens\\" + dateFormat.format(date) + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            driver.close();
+        }
+
     }
 
     @Test
@@ -59,7 +74,6 @@ public class Tests {
             Date date = new Date() ;
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
             FileUtils.copyFile(screenShotFile, new File("D:\\SeleniumScreens\\" + dateFormat.format(date) + ".png"));
-//            LoggerConsole.
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
