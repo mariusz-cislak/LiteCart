@@ -66,7 +66,8 @@ public class LoginShopPageTests extends LoginShopPageTest {
     public void emptyFieldsLogin() {
         signInButtonClick();
         String signInButtonName = getSignInButtonName();
-        Assert.assertNotNull(driver.findElement(By.name(signInButtonName)), "Login button name found:" + signInButtonName);
+
+        Assert.assertTrue(driver.findElement(By.name(signInButtonName)).isDisplayed());
         takeScreenshot();
     }
 
