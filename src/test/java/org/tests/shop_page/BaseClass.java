@@ -54,9 +54,19 @@ public class BaseClass {
         }
     }
 
-    public void waitForElement() {
+    public void waitForElementById(String elementId) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hdtb-msb-vis")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(elementId)));
+    }
+
+    public void waitForElementByCssSelector(String elementCssSelector) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(elementCssSelector)));
+    }
+
+    public void waitForElementByXpathSelector(String elementXpathSelector) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpathSelector)));
     }
 
 }
