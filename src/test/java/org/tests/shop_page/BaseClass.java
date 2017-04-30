@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 
 import java.io.File;
@@ -69,4 +70,11 @@ public class BaseClass {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpathSelector)));
     }
 
+    public void findElementByName(String elementName) {
+        driver.findElements(By.id(elementName));
+    }
+
+    public void findEletetermentByName(String elementName) {
+       Assert.assertNotNull(driver.findElement(By.id(elementName)));
+    }
 }

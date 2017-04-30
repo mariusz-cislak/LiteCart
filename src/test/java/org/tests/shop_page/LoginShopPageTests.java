@@ -6,12 +6,17 @@ package org.tests.shop_page;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.tests.enums.PageElementsEnums;
+import org.tests.shop_page.LoginShopPageTest;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 
-public class LoginShopPageTests extends BaseClass {
+public class LoginShopPageTests extends LoginShopPageTest {
 
     @Ignore
     @Test
@@ -59,7 +64,10 @@ public class LoginShopPageTests extends BaseClass {
 
     @Test
     public void emptyFieldsLogin() {
-
+        signInButtonClick();
+        String signInButtonName = getSignInButtonName();
+        Assert.assertNotNull(driver.findElement(By.name(signInButtonName)), "Login button name found:" + signInButtonName);
+        takeScreenshot();
     }
 
     @Test
