@@ -1,35 +1,23 @@
-package org.tests;
+package org.tests.shop_page;
 
-import com.gargoylesoftware.htmlunit.javascript.host.intl.DateTimeFormat;
-import com.sun.deploy.uitoolkit.ui.LoggerConsole;
-import com.sun.media.jfxmedia.logging.Logger;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.logging.Log;
-import org.apache.xerces.impl.dv.xs.DateTimeDV;
-import org.eclipse.jetty.util.log.LoggerLog;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.logging.*;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.testng.Reporter;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * Created by Mariusz on 26.04.2017.
@@ -42,6 +30,7 @@ public class Tests {
     public void Start() {
 
         driver = new ChromeDriver();
+        Reporter.log(" BROWSER SESSION START ");
     }
 
     @Test
@@ -60,9 +49,10 @@ public class Tests {
         }
 
     }
-
+//    @Ignore
     @Test
     public void test2() {
+        Reporter.log("Start test2", true);
         driver.get("http://www.google.com");
         driver.findElement(By.name("q")).sendKeys("litecart");
         driver.findElement(By.cssSelector("button[type='submit']")).click();
@@ -84,5 +74,7 @@ public class Tests {
     @After
     public void End() {
         driver.quit();
+        Reporter.log(" BROWSER SESSION END ", true);
     }
+
 }

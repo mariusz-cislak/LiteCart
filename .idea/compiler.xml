@@ -21,6 +21,8 @@
     <bytecodeTargetLevel>
       <module name="artIdTests_main" target="1.5" />
       <module name="artIdTests_test" target="1.5" />
+      <module name="LiteCart_main" target="1.5" />
+      <module name="LiteCart_test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
