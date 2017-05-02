@@ -47,6 +47,7 @@ public class LoginShopPageTests extends LoginShopPageTest {
         signInButton.click();
         //waitForElementIsNotVisibleByName(getSignInButtonName());
         Assert.assertTrue(driver.findElement(By.cssSelector(UserPageElementsEnums.LOGIN_ALERT_SUCCESS.toString())).isDisplayed());
+        Reporter.log("Alert displayed: " + driver.findElement(By.cssSelector(UserPageElementsEnums.LOGIN_ALERT_SUCCESS.toString())).getText(), true);
         takeScreenshot();
     }
 
@@ -61,16 +62,20 @@ public class LoginShopPageTests extends LoginShopPageTest {
     }
 
     @Test
-    public void emptyNameLogin() {
-
+    public void emptyPasswordLogin() {
+        emailTextBox.clear();
+        emailTextBox.sendKeys("mariusz.cislak@gmail.com");
+        passwordTextBox.clear();
+        takeScreenshot();
+        signInButton.click();
+        Assert.assertTrue(signInButton.isDisplayed());
+        takeScreenshot();
     }
 
     @Test
     public void emptyMailLogin() {
         emailTextBox.clear();
         passwordTextBox.clear();
-        passwordTextBox.findElement(By.name("password"));
-        passwordTextBox.click();
         passwordTextBox.sendKeys("Test10");
         takeScreenshot();
         signInButton.click();
