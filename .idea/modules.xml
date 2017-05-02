@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/LiteCart.iml" filepath="$PROJECT_DIR$/.idea/modules/LiteCart.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/LiteCart_main.iml" filepath="$PROJECT_DIR$/.idea/modules/LiteCart_main.iml" group="LiteCart" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/LiteCart_test.iml" filepath="$PROJECT_DIR$/.idea/modules/LiteCart_test.iml" group="LiteCart" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/liteCartTests_test.iml" filepath="$PROJECT_DIR$/.idea/modules/liteCartTests_test.iml" />
     </modules>
   </component>
 </project>

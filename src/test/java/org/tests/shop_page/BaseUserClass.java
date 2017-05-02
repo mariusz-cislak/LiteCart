@@ -1,8 +1,9 @@
 package org.tests.shop_page;
 
 /**
- * ${NAME} created by Mariusz Ciślak on 30.04.2017 16:30 in IntelliJ IDEA 16:34 in IntelliJ IDEA.
+ * Created by Mariusz Ciślak on 30.04.2017 17:49 in IntelliJ IDEA.
  */
+
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +22,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class BaseClass {
+public class BaseUserClass {
+
+
+    private static String loginUserPageUrl = "http://127.0.0.1:8080/litecart/en/";
+    private static String adminUserPageUrl = "http://127.0.0.1:8080/litecart/admin/login.php";
+
+
 
     public WebDriver driver;
 
@@ -31,7 +38,7 @@ public class BaseClass {
         Reporter.log("Browser session start", 1, true);
         //driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://127.0.0.1/litecart/en/");
+        driver.get(loginUserPageUrl);
         Reporter.log("Application start", 1, true);
     }
 
@@ -44,10 +51,10 @@ public class BaseClass {
 
 
     public void takeScreenshot() {
-        File screenShotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        Date date = new Date() ;
+        File screenShotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        Date date = new Date();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         try {
             FileUtils.copyFile(screenShotFile, new File("D:\\SeleniumScreens\\" + dateFormat.format(date) + ".png"));
         } catch (IOException e) {
@@ -58,6 +65,11 @@ public class BaseClass {
     public void waitForElementById(String elementId) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(elementId)));
+    }
+
+    public void waitForElementIsNotVisibleByName(String elementName) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(elementName)));
     }
 
     public void waitForElementByCssSelector(String elementCssSelector) {
@@ -75,6 +87,7 @@ public class BaseClass {
     }
 
     public void findEletetermentByName(String elementName) {
-       Assert.assertNotNull(driver.findElement(By.id(elementName)));
+        Assert.assertNotNull(driver.findElement(By.id(elementName)));
     }
+
 }

@@ -9,14 +9,17 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.tests.enums.PageElementsEnums;
-import org.tests.shop_page.LoginShopPageTest;
+import org.testng.Reporter;
+import org.tests.enums.UserPageElementsEnums;
+
+import java.util.logging.Logger;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
 
 
 public class LoginShopPageTests extends LoginShopPageTest {
+
+    LoginShopPageTest loginShopPageTest = new LoginShopPageTest();
 
     @Ignore
     @Test
@@ -26,20 +29,25 @@ public class LoginShopPageTests extends LoginShopPageTest {
     }
 
     @Test
-    public void checkpageTitle() {
+    public void checkPageTitle() {
         String pageTitle = driver.getTitle();
-        assertEquals(pageTitle, PageElementsEnums.PAGE_TITLE.toString());
+        assertEquals(pageTitle, UserPageElementsEnums.PAGE_TITLE.toString());
         takeScreenshot();
     }
 
-    @Test
-    public void goToCreateAccountPage() {
 
-    }
-
+    //region Login Tests
     @Test
     public void correctUserLogin() {
-
+        emailTextBox.clear();
+        emailTextBox.sendKeys("mariusz.cislak@gmail.com");
+        passwordTextBox.clear();
+        passwordTextBox.sendKeys("test10");
+        takeScreenshot();
+        signInButton.click();
+        //waitForElementIsNotVisibleByName(getSignInButtonName());
+        Assert.assertTrue(driver.findElement(By.cssSelector(UserPageElementsEnums.LOGIN_ALERT_SUCCESS.toString())).isDisplayed());
+        takeScreenshot();
     }
 
     @Test
@@ -59,20 +67,35 @@ public class LoginShopPageTests extends LoginShopPageTest {
 
     @Test
     public void emptyMailLogin() {
-
-    }
-
-    @Test
-    public void emptyFieldsLogin() {
-        signInButtonClick();
-        String signInButtonName = getSignInButtonName();
-
-        Assert.assertTrue(driver.findElement(By.name(signInButtonName)).isDisplayed());
+        emailTextBox.clear();
+        passwordTextBox.clear();
+        passwordTextBox.findElement(By.name("password"));
+        passwordTextBox.click();
+        passwordTextBox.sendKeys("Test10");
+        takeScreenshot();
+        signInButton.click();
+        Assert.assertTrue(signInButton.isDisplayed());
         takeScreenshot();
     }
 
     @Test
+    public void emptyFieldsLogin() {
+        emailTextBox.clear();
+        passwordTextBox.clear();
+        signInButton.click();
+        Assert.assertTrue(signInButton.isDisplayed());
+    }
+
+    @Test
     public void incorrectMailFormatLogin() {
+
+    }
+    //endregion
+
+
+
+    @Test
+    public void goToCreateAccountPageFromLeftPanel() {
 
     }
 }
