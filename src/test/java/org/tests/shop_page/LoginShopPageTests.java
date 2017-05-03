@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -69,7 +70,15 @@ public class LoginShopPageTests extends LoginShopPageTest {
 
     @Test
     public void incorrectUserPasswordLogin() {
-
+        emailTextBox.clear();
+        emailTextBox.sendKeys("mariusz.cislak@gmail.com");
+        passwordTextBox.clear();
+        passwordTextBox.sendKeys("wrong_password_10");
+        takeScreenshot();
+        signInButton.click();
+        Assert.assertTrue(signInButton.isDisplayed());
+        takeScreenshot();
+//      TODO: add assert for error alert
     }
 
     @Test
