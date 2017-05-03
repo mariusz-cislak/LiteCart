@@ -1,5 +1,6 @@
 package org.tests.shop_page;
 
+import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class LoginShopPageTest extends BaseUserClass {
 
-// region Sign In Button
+    // region Sign In Button
     private static final String signInButtonName = "login";
     @FindBy(name = signInButtonName)
 //    WebElement ssignInButton = driver.findElement(By.name(signInButtonName));
@@ -96,7 +97,7 @@ public class LoginShopPageTest extends BaseUserClass {
     }
 //endregion
 
-// region Email Address Textbox
+    // region Email Address Textbox
     private static final String emailTextBoxName = "email";
     @FindBy(name = emailTextBoxName)
     WebElement emailTextBox = new WebElement() {
@@ -170,7 +171,7 @@ public class LoginShopPageTest extends BaseUserClass {
     };
 //    endregion
 
-// region Pasword Textbox
+    // region Pasword Textbox
 private static final String passwordTextBoxName = "password";
     @FindBy(name = passwordTextBoxName)
     WebElement passwordTextBox = new WebElement() {

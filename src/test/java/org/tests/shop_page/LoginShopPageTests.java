@@ -4,12 +4,16 @@ package org.tests.shop_page;
  * Created by Mariusz Ciślak on 30.04.2017 16:37 in IntelliJ IDEA.
  */
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.tests.enums.SpecialCharactersEnums;
+import org.tests.enums.UrlEnums;
 import org.tests.enums.UserPageElementsEnums;
 
 import java.util.logging.Logger;
@@ -53,7 +57,14 @@ public class LoginShopPageTests extends LoginShopPageTest {
 
     @Test
     public void incorrectUserMailLogin() {
-
+        emailTextBox.clear();
+        emailTextBox.sendKeys("mmmmariusz.cislak@gmail.com");
+        passwordTextBox.clear();
+        passwordTextBox.sendKeys("test10");
+        takeScreenshot();
+        signInButton.click();
+        Assert.assertTrue(signInButton.isDisplayed());
+        takeScreenshot();
     }
 
     @Test
@@ -88,6 +99,18 @@ public class LoginShopPageTests extends LoginShopPageTest {
         emailTextBox.clear();
         passwordTextBox.clear();
         signInButton.click();
+        Assert.assertTrue(signInButton.isDisplayed());
+    }
+
+    @Test
+    public void emojiMailLogin() {
+        emailTextBox.clear();
+        emailTextBox.sendKeys(SpecialCharactersEnums.EMOJI.toString());
+        passwordTextBox.clear();
+        passwordTextBox.sendKeys("test10");
+        takeScreenshot();
+        signInButton.click();
+        takeScreenshot();
         Assert.assertTrue(signInButton.isDisplayed());
     }
 

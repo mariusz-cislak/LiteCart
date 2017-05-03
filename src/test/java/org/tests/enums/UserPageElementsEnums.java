@@ -16,7 +16,7 @@ public enum UserPageElementsEnums {
     LOGIN_ALERT_SUCCESS ("div[class = 'alert alert-success']");
 
     private final String text;
-    private UserPageElementsEnums(final String text) {
+    UserPageElementsEnums(final String text) {
         this.text = text;
     }
 

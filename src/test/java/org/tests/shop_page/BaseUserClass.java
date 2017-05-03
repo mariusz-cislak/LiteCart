@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.tests.enums.UrlEnums;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,10 +29,8 @@ public class BaseUserClass {
     @Rule
     public TestName name = new TestName();
 
-    private static String loginUserPageUrl = "http://127.0.0.1:8080/litecart/en/";
-    private static String adminUserPageUrl = "http://127.0.0.1:8080/litecart/admin/login.php";
-
-
+//    private static String loginUserPageUrl = "http://127.0.0.1:8080/litecart/en/";
+//    private static String adminUserPageUrl = "http://127.0.0.1:8080/litecart/admin/login.php";
 
     public WebDriver driver;
 
@@ -39,9 +38,9 @@ public class BaseUserClass {
     public void applicationStart() {
         driver = new ChromeDriver();
         Reporter.log("Browser session start", 1, true);
-        //driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get(loginUserPageUrl);
+        driver.get(UrlEnums.USER_LOGIN_PAGE_URL.toString());
+
         Reporter.log("Application start", 1, true);
     }
 
