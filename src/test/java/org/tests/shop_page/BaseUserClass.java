@@ -7,6 +7,8 @@ package org.tests.shop_page;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -23,7 +25,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BaseUserClass {
-
+    @Rule
+    public TestName name = new TestName();
 
     private static String loginUserPageUrl = "http://127.0.0.1:8080/litecart/en/";
     private static String adminUserPageUrl = "http://127.0.0.1:8080/litecart/admin/login.php";
@@ -56,7 +59,10 @@ public class BaseUserClass {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
         try {
-            FileUtils.copyFile(screenShotFile, new File("D:\\SeleniumScreens\\" + dateFormat.format(date) + ".png"));
+            FileUtils.copyFile(screenShotFile, new File("D:\\SeleniumScreens\\"
+                    + name.getMethodName() + "_"
+                    + dateFormat.format(date)
+                    + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,11 +71,6 @@ public class BaseUserClass {
     public void waitForElementById(String elementId) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(elementId)));
-    }
-
-    public void waitForElementIsNotVisibleByName(String elementName) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(elementName)));
     }
 
     public void waitForElementByCssSelector(String elementCssSelector) {
