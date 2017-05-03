@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import javax.lang.model.element.Name;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -79,10 +79,6 @@ public class BaseAdminClass {
     public void waitForElementByXpathSelector(String elementXpathSelector) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpathSelector)));
-    }
-
-    public void findElementByName(Name name, String elementName) {
-        driver.findElement(By.name(elementName));
     }
 
     public void findElementById(ID id, String elementId) {
