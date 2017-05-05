@@ -4,7 +4,7 @@ package org.tests.enums;
  * Created by Mariusz Ciślak on 03.05.2017 14:53 in IntelliJ IDEA.
  */
 public enum SpecialCharactersEnums {
-    EMOJI ("☺⛑☂☘✨⚡☄☀⛅☁⛈☃⛄❄☔❤");
+    EMOJI ("✨⚡☀⛅☺⛄❄☔");
 
 
     private final String text;

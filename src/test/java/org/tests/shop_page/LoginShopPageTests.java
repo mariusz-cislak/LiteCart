@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -114,13 +115,23 @@ public class LoginShopPageTests extends LoginShopPageTest {
     @Test
     public void emojiMailLogin() {
         emailTextBox.clear();
-        emailTextBox.sendKeys(SpecialCharactersEnums.EMOJI.toString());
+        emailTextBox.sendKeys(SpecialCharactersEnums.EMOJI.toString() + "@gmail.com");
         passwordTextBox.clear();
         passwordTextBox.sendKeys("test10");
         takeScreenshot();
         signInButton.click();
         takeScreenshot();
         Assert.assertTrue(signInButton.isDisplayed());
+
+
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+
+        WebElement field = driver.findElement(By.name("email"));
+        Boolean is_valid = (Boolean)js.executeScript("return arguments[0].checkValidity();", field);
+        String message = (String)js.executeScript("return arguments[0].validationMessage;", field);
+
+        Reporter.log(is_valid.toString(), 0, true);
+        Reporter.log(message, 0, true);
     }
 
     @Test
